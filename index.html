@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Akka 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background-color: lightblue;
+    height:100vh;
+    color:white;
+}
+
+.screen{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:20px;
+    overflow:hidden;
+}
+
+.active{
+    display:flex;
+}
+
+h1,h2,h3,p{
+    text-align:center;
+}
+
+button{
+    border:none;
+    outline:none;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.glass{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 8px 32px rgba(0,0,0,0.2);
+}
+
+/* COUNTDOWN */
+#countdown h1{
+    font-size:120px;
+    animation:zoom 1s infinite;
+}
+
+@keyframes zoom{
+    0%{transform:scale(0.7);opacity:0.4;}
+    100%{transform:scale(1.2);opacity:1;}
+}
+
+/* LOGIN */
+.login-container{
+    width:100%;
+    max-width:1200px;
+    display:flex;
+    gap:40px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card-section{
+    width:420px;
+    height:520px;
+    perspective:1000px;
+}
+
+.birthday-card{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:1s;
+}
+
+.card-section:hover .birthday-card{
+    transform:rotateY(180deg);
+}
+
+.front{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    background:linear-gradient(135deg,#ff758c,#f9a8c9);
+}
+
+.front-content{
+    text-align:center;
+}
+
+.front-content h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.front-content p{
+    font-size:20px;
+}
+
+.back{
+    transform:rotateY(180deg);
+    overflow:hidden;
+}
+
+.back img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.front,.back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    backface-visibility:hidden;
+    overflow:hidden;
+}
+
+.front img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.back{
+    transform:rotateY(180deg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    padding:30px;
+}
+
+.back h2{
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.pin-box{
+    width:360px;
+    border-radius:25px;
+    padding:30px;
+}
+
+.pin-display{
+    height:70px;
+    width:100%;
+    background:rgba(255,255,255,0.2);
+    border-radius:15px;
+    margin-bottom:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    letter-spacing:10px;
+}
+
+.keypad{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.keypad button{
+    height:70px;
+    border-radius:15px;
+    font-size:24px;
+    background:white;
+    color:#ff4d88;
+    font-weight:bold;
+}
+
+.keypad button:hover{
+    transform:scale(1.05);
+}
+
+/* QUESTION */
+.question-box{
+    padding:40px;
+    border-radius:30px;
+    width:90%;
+    max-width:700px;
+}
+
+.option-buttons{
+    margin-top:30px;
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    width:100%;
+    height:200px;
+}
+
+.option-buttons button{
+    padding:15px 35px;
+    border-radius:50px;
+    font-size:20px;
+    font-weight:600;
+}
+
+.yes-btn{background:#00e676;color:white;}
+.no-btn{background:#ff1744;color:white;Position:relative;}
+.back-btn{background:#ffffff;color:#ff4081;}
+
+/*MOVING EFFECT*/
+.move{
+    transition:0.25s;
+}
+/* NO SCREEN */
+#noScreen img{
+    width:300px;
+    animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-20px);}
+}
+
+/* GIFTS */
+.gift-container{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:40px;
+}
+
+.gift-box{
+    width:220px;
+    height:220px;
+    position:relative;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.gift-box:hover{
+    transform:translateY(-20px) scale(1.05);
+}
+
+.box{
+    width:100%;
+    height:100%;
+    background:#ff4d88;
+    border-radius:20px;
+    position:absolute;
+    bottom:0;
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+}
+
+.lid{
+    width:240px;
+    height:50px;
+    background:#ff80ab;
+    position:absolute;
+    top:-20px;
+    left:-10px;
+    border-radius:15px;
+}
+
+.ribbonV,.ribbonH{
+    position:absolute;
+    background:gold;
+}
+
+.ribbonV{
+    width:30px;
+    height:100%;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.ribbonH{
+    height:30px;
+    width:100%;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.bow{
+    position:absolute;
+    width:60px;
+    height:60px;
+    border:10px solid gold;
+    border-radius:50%;
+    top:-45px;
+}
+
+.bow.left{left:70px;}
+.bow.right{right:70px;}
+
+.gift-box p{
+    position:absolute;
+    bottom:-50px;
+    width:100%;
+    text-align:center;
+    font-size:22px;
+    font-weight:600;
+}
+
+/* CAKE */
+.cake3d{
+    position:relative;
+    margin-top:50px;
+    animation:cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.tier{
+    position:relative;
+    margin:auto;
+    border-radius:20px;
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.3),
+        inset 0 -15px 0 rgba(0,0,0,0.15);
+}
+
+.bottom-tier{
+    width:320px;
+    height:120px;
+    background:linear-gradient(
+        to bottom,
+        #ff9db5,
+        #ff6f91
+    );
+}
+
+.top-tier{
+    width:220px;
+    height:90px;
+    margin-bottom:-10px;
+    background:linear-gradient(
+        to bottom,
+        #ffd1dc,
+        #ffb3c6
+    );
+    z-index:2;
+}
+
+.candle{
+    width:24px;
+    height:90px;
+    background:linear-gradient(
+        to bottom,
+        white,
+        #f5f5f5
+    );
+    margin:auto;
+    position:relative;
+}
+
+.flame{
+    width:30px;
+    height:45px;
+    background:radial-gradient(
+        circle,
+        yellow,
+        orange,
+        red
+    );
+    border-radius:50%;
+    position:absolute;
+    top:-40px;
+    left:-3px;
+    animation:flicker .3s infinite;
+    box-shadow:0 0 25px orange;
+}
+
+.cake-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.cake{
+    position:relative;
+    margin-top:40px;
+}
+
+.layer{
+    border-radius:20px;
+    position:relative;
+    margin:auto;
+}
+
+.layer1{
+    width:300px;
+    height:100px;
+    background:#ff8fab;
+}
+
+.layer2{
+    width:220px;
+    height:80px;
+    background:#ffb3c6;
+    margin-top:-10px;
+}
+
+.candle{
+    width:20px;
+    height:80px;
+    background:white;
+    margin:auto;
+    position:relative;
+}
+
+.flame{
+    width:25px;
+    height:40px;
+    background:orange;
+    border-radius:50%;
+    position:absolute;
+    top:-35px;
+    left:-3px;
+    animation:flicker 0.3s infinite;
+}
+
+@keyframes flicker{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(0.9);}
+}
+
+.blow-btn{
+    margin-top:40px;
+    padding:15px 40px;
+    border-radius:40px;
+    font-size:20px;
+    background:white;
+    color:#ff4081;
+    font-weight:bold;
+}
+
+/* LOADING */
+.loader{
+    width:120px;
+    height:120px;
+    border:10px solid rgba(255,255,255,0.3);
+    border-top:10px solid white;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin-bottom:30px;
+}
+
+@keyframes spin{
+    100%{transform:rotate(360deg);}
+}
+
+.firework{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    animation:explode 2s infinite;
+}
+
+@keyframes explode{
+    0%{transform:translate(0,0) scale(1);opacity:1;}
+    100%{transform:translate(var(--x),var(--y)) scale(0);opacity:0;}
+}
+
+/* MEMORIES */
+.memory-wrapper{
+    width:100%;
+    overflow:hidden;
+    margin-top:30px;
+}
+
+.memory-track{
+    display:flex;
+    gap:25px;
+    width: max-content;
+    animation:scroll 30s linear infinite;
+}
+
+@keyframes scroll{
+    FROM{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+}
+
+.memory-card{
+    min-width:300px;
+    height:420px;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+}
+
+.memory-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.memory-card h3{
+    position:absolute;
+    bottom:20px;
+    width:100%;
+    text-align:center;
+    font-size:24px;
+}
+
+/* MESSAGE */
+.message-card{
+    max-width:850px;
+    padding:50px;
+    border-radius:30px;
+    line-height:2;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.02);}
+    100%{transform:scale(1);}
+}
+
+.message-card p{
+    font-size:20px;
+}
+
+.floating-hearts span{
+    position:absolute;
+    color:white;
+    font-size:30px;
+    animation:heartFloat linear infinite;
+}
+
+@keyframes heartFloat{
+    0%{transform:translateY(100vh) scale(0);opacity:0;}
+    100%{transform:translateY(-100vh) scale(1.5);opacity:1;}
+}
+
+@media(max-width:900px){
+    body{overflow:auto;}
+
+    .login-container{
+        flex-direction:column;
+        padding-bottom:50px;
+    }
+
+    .card-section{
+        width:90%;
+        height:450px;
+    }
+
+    .pin-box{
+        width:95%;
+    }
+
+    #countdown h1{
+        font-size:80px;
+    }
+
+    .gift-container{
+        gap:80px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="floating-hearts" id="hearts"></div>
+
+<!-- COUNTDOWN -->
+<section class="screen active" id="countdown">
+    <h1 id="count">3</h1>
+</section>
+
+<!-- LOGIN -->
+<section class="screen" id="loginScreen">
+    <div class="login-container">
+
+        <div class="card-section">
+            <div class="birthday-card">
+                <!-- FRONT SIDE -->
+                <div class="front glass">
+                    <div class="front-content">
+                        <h2>Prathibha Akka 💖</h2>
+                        <p>
+                            To the best sister in the world 🌸<br>
+                            Flip the card and unlock your surprise 🎁
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <!-- BACK SIDE -->
+                <div class="back">
+                    <img src="images/1.jpeg" alt="sister">
+                </div>
+            </div>
+        </div>
+
+        <div class="pin-box glass">
+            <h2 style="margin-bottom:20px;text-align:center;">Enter Secret PIN 🔐</h2>
+
+            <div class="pin-display" id="pinDisplay"></div>
+
+            <div class="keypad">
+                <button onclick="addPin('1')">1</button>
+                <button onclick="addPin('2')">2</button>
+                <button onclick="addPin('3')">3</button>
+                <button onclick="addPin('4')">4</button>
+                <button onclick="addPin('5')">5</button>
+                <button onclick="addPin('6')">6</button>
+                <button onclick="addPin('7')">7</button>
+                <button onclick="addPin('8')">8</button>
+                <button onclick="addPin('9')">9</button>
+                <button onclick="clearPin()"><i class="fa-solid fa-delete-left"></i></button>
+                <button onclick="addPin('0')">0</button>
+                <button onclick="checkPin()"><i class="fa-solid fa-check"></i></button>
+            </div>
+
+            <p style="margin-top:20px;text-align:center;">Default PIN : <b>2905</b></p>
+        </div>
+
+    </div>
+</section>
+
+<!-- READY -->
+<section class="screen" id="readyScreen">
+    <div class="question-box glass">
+        <h1>Are You Ready For The Surprise? 🎉</h1>
+
+        <h3>Try to Catch the No button</h3>
+
+        <div class="option-buttons" id="buttonArea">
+            <button class="yes-btn" onclick="showScreen('giftScreen')">Yes 😍</button>
+            <button class="no-btn move" id="noBtn" onclick="noButtonClicked()">No 😒</button>
+        </div>
+    </div>
+</section>
+
+<!-- NO -->
+<section class="screen" id="noScreen">
+    <img src="gifs/Dare.gif" alt="cute">
+    <h1 style="margin-top:20px;">How Dare You 😤</h1>
+    <button class="blow-btn" onclick="showScreen('readyScreen')">Try Again 💖</button>
+</section>
+
+<!-- GIFTS -->
+<section class="screen" id="giftScreen">
+
+    <h1>Choose Your Gift 🎁</h1>
+
+    <div class="gift-container">
+
+        <div class="gift-box" onclick="showScreen('cakeScreen')">
+            <div class="box">
+                <div class="ribbonV"></div>
+                <div class="ribbonH"></div>
+            </div>
+            <div class="lid"></div>
+            <div class="bow left"></div>
+            <div class="bow right"></div>
+            <p>Cake Surprise 🎂</p>
+        </div>
+
+        <div class="gift-box" onclick="showScreen('memoryScreen')">
+            <div class="box" style="background:#7c4dff;">
+                <div class="ribbonV"></div>
+                <div class="ribbonH"></div>
+            </div>
+            <div class="lid" style="background:#9575cd"></div>
+            <div class="bow left"></div>
+            <div class="bow right"></div>
+            <p>Memories 📸</p>
+        </div>
+
+        <div class="gift-box" onclick="showScreen('messageScreen')">
+            <div class="box" style="background:#00bfa5;">
+                <div class="ribbonV"></div>
+                <div class="ribbonH"></div>
+            </div>
+            <div class="lid" style="background:#26a69a"></div>
+            <div class="bow left"></div>
+            <div class="bow right"></div>
+            <p>Special Message 💌</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CAKE -->
+<section class="screen" id="cakeScreen">
+
+    <h1>Make A Wish Akka ✨</h1>
+
+    <div class="cake-container">
+
+        <div class="cake3d">
+
+            <div class="candle">
+                <div class="flame" id="flame"></div>
+            </div>
+
+            <div class="tier top-tier"></div>
+            <div class="tier bottom-tier"></div>
+
+        </div>
+
+        <button class="blow-btn" onclick="openFlowersPage()">Blow Candle 💨</button>
+
+        
+
+    </div>
+
+</section>
+
+<!-- LOADING -->
+<section class="screen" id="loadingScreen">
+
+    <div class="loader"></div>
+
+    <h1>Happy Birthday AKKA 🎉</h1>
+    <p style="margin-top:15px;font-size:22px;">May your life be filled with happiness, success and love 💖</p>
+
+    <button class="blow-btn back-btn" style="margin-top:30px;" onclick="showScreen('giftScreen')">Back</button>
+
+</section>
+
+<!-- MEMORIES -->
+<section class="screen" id="memoryScreen">
+
+    <h1>Memories 📸</h1>
+
+    <div class="memory-wrapper">
+        <div class="memory-track">
+
+            <div class="memory-card glass">
+                <img src="images/7.jpeg">
+                <h3>Crazy Moments 😍</h3>
+            </div>
+
+            <div class="memory-card glass">
+                <img src="images/3.jpeg">
+                <h3>Couple 😍</h3>
+            </div>
+
+            <div class="memory-card glass">
+                <img src="images/5.jpeg">
+                <h3>Family Moments 🌸</h3>
+            </div>
+
+            <div class="memory-card glass">
+                <img src="images/2.jpeg">
+                <h3>Mother and Daughter ✨</h3>
+            </div>
+
+            <div class="memory-card glass">
+                <img src="images/6.jpeg">
+                <h3>Mother and Son 💖</h3>
+            </div>
+
+            <div class="memory-card glass">
+                <img src="images/10.jpeg">
+                <h3>Son 💖</h3>
+            </div>
+
+            <div class="memory-card glass">
+                <img src="images/4.jpeg">
+                <h3>Daughter 💖</h3>
+            </div>
+
+            <div class="memory-card glass">
+                <img src="images/14.jpeg">
+                <h3>Devatha 💖</h3>
+            </div>
+
+            <div class="memory-card glass">
+                <img src="images/12.jpeg">
+                <h3>Brother and Sister 💖</h3>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="blow-btn back-btn" style="margin-top:40px;" onclick="showScreen('giftScreen')">Back</button>
+
+</section>
+
+<!-- MESSAGE -->
+<section class="screen" id="messageScreen">
+
+    <div class="message-card glass">
+
+        <h1 style="margin-bottom:25px;">To My Lovely Akka 💌</h1>
+
+        <p>
+            Dear Akka,<br>
+
+            You are not just my sister, you are my second mother, my best friend, my guide and my biggest support. 💖<br>
+
+            Thank you for always protecting me, understanding me and making my life beautiful with your love and care. 🌸<br>
+
+            I wish your life becomes filled with endless happiness, success, laughter and love. May all your dreams come true and may your smile always shine brighter than stars. 🌙💫<br>
+
+            Happy Birthday to the world's best Akka 🎂💖<br>
+
+            — Your Loving Akshith 🥹
+        </p>
+
+        <div style="text-align:center;margin-top:30px;">
+            <button class="blow-btn back-btn" onclick="showScreen('giftScreen')">Back</button>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const screens = document.querySelectorAll('.screen');
+let currentPin = '';
+const correctPin = '2905';
+const birthdayMessage='';
+
+function showScreen(id){
+    screens.forEach(screen=>screen.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if(id === 'readyScreen'){
+        startNoButtonGame();
+    }
+}
+
+// COUNTDOWN
+let count = 3;
+const countdown = setInterval(()=>{
+    count--;
+    document.getElementById('count').innerText = count;
+
+    if(count === 0){
+        clearInterval(countdown);
+        showScreen('loginScreen');
+    }
+},1000);
+
+// PIN
+function addPin(num){
+    if(currentPin.length < 6){
+        currentPin += num;
+        document.getElementById('pinDisplay').innerText = '* '.repeat(currentPin.length);
+    }
+}
+
+function clearPin(){
+    currentPin = currentPin.slice(0,-1);
+    document.getElementById('pinDisplay').innerText = '* '.repeat(currentPin.length);
+}
+
+function checkPin(){
+    if(currentPin === correctPin){
+        showScreen('readyScreen');
+    }else{
+        alert('Wrong PIN 😅 Try Again');
+        currentPin='';
+        document.getElementById('pinDisplay').innerText='';
+    }
+}
+
+/*MOVING NO BUTTON GAME */
+const noBtn = document.getElementById('noBtn');
+const buttonArea = document.getElementById('buttonArea');
+let gameActive = false;
+function startNoButtonGame(){
+    gameActive = true;
+    noBtn.innerText = "Catch Me 😜";
+    /* Stop moving after 5 seconds */
+    setTimeout(()=>{
+        gameActive = false;
+        noBtn.innerText = "No 😒";
+    },10000);
+}
+
+/* MOVE BUTTON */
+
+buttonArea.addEventListener('mousemove',(e)=>{
+
+    if(!gameActive) return;
+
+    const areaRect = buttonArea.getBoundingClientRect();
+
+    const maxX = areaRect.width - noBtn.offsetWidth;
+
+    const maxY = areaRect.height - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + 'px';
+
+    noBtn.style.top = randomY + 'px';
+
+});
+
+/* MOBILE TOUCH SUPPORT */
+
+buttonArea.addEventListener('touchstart',()=>{
+
+    if(!gameActive) return;
+
+    const areaRect = buttonArea.getBoundingClientRect();
+
+    const maxX = areaRect.width - noBtn.offsetWidth;
+
+    const maxY = areaRect.height - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + 'px';
+
+    noBtn.style.top = randomY + 'px';
+
+});
+
+/* IF NO BUTTON CLICKED */
+
+function noButtonClicked(){
+
+    if(gameActive){
+
+        /* During 5 seconds button keeps escaping */
+        return;
+    }
+
+    showScreen('noScreen');
+}
+
+// CAKE
+function blowCandle(){
+    document.getElementById('flame').style.display='none';
+
+    setTimeout(()=>{
+        showScreen('loadingScreen');
+        createFireworks();
+    },1000);
+}
+
+// FIREWORKS
+function createFireworks(){
+
+    for(let i=0;i<100;i++){
+
+        const firework = document.createElement('div');
+        firework.classList.add('firework');
+
+        firework.style.left = Math.random()*100 + 'vw';
+        firework.style.top = Math.random()*100 + 'vh';
+
+        firework.style.background = `hsl(${Math.random()*360},100%,60%)`;
+
+        firework.style.setProperty('--x', (Math.random()*400-200)+'px');
+        firework.style.setProperty('--y', (Math.random()*400-200)+'px');
+
+        document.body.appendChild(firework);
+
+        setTimeout(()=>{
+            firework.remove();
+        },2000);
+    }
+}
+
+// HEARTS
+const heartsContainer = document.getElementById('hearts');
+
+for(let i=0;i<25;i++){
+    const heart = document.createElement('span');
+    heart.innerHTML = '❤️';
+
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.animationDuration = (Math.random()*5 + 5) + 's';
+    heart.style.fontSize = (Math.random()*20 + 20) + 'px';
+
+    heartsContainer.appendChild(heart);
+}
+
+function openFlowersPage() {
+
+    // Save current screen
+    sessionStorage.setItem("returnScreen", "giftScreen");
+
+    // Open flowers page
+    window.location.href = "flower.html";
+}
+
+// ===============================
+// RETURN FROM index.html
+// ===============================
+
+const params = new URLSearchParams(window.location.search);
+const returnScreen = params.get("screen");
+
+if(returnScreen){
+
+    // Stop countdown screen
+    clearInterval(countdown);
+
+    // Hide all screens
+    screens.forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    // Open requested screen directly
+    document.getElementById(returnScreen).classList.add("active");
+}
+
+</script>
+
+</body>
+</html>
